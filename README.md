@@ -40,8 +40,8 @@ contact/                                  formulaire et coordonnées
 mentions-legales/
 politique-de-confidentialite/
 404.html
-assets/css/site.css                       feuille de style unique (13 ko)
-assets/js/site.js                         menu, formulaire (5 ko)
+assets/css/site.css                       feuille de style unique (25 ko)
+assets/js/site.js                         menu, apparitions, formulaire (9 ko)
 assets/img/                               monogramme, favicon, emplacements photo, image de partage
 docs/                                     la méthode suivie, étape par étape
 .claude/skills/                           compétences du projet (voix, faits, persona, gabarits)

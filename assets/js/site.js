@@ -1,5 +1,6 @@
 /* Site Lea Cazaux, naturopathe.
-   Trois usages seulement : menu mobile, annee du pied de page, formulaire de contact.
+   Menu mobile, en-tete au defilement, apparitions discretes, annee du pied de
+   page, formulaire de contact.
    Rien d'essentiel ne depend de ce fichier : la page reste lisible sans lui. */
 
 (function () {
@@ -24,6 +25,101 @@
         burger.focus();
       }
     });
+  }
+
+  /* --- en-tete : filet et ombre une fois la page defilee ----------------- */
+
+  var entete = document.querySelector(".entete");
+  if (entete) {
+    var majEntete = function () {
+      entete.classList.toggle("est-defile", window.scrollY > 8);
+    };
+    majEntete();
+    window.addEventListener("scroll", majEntete, { passive: true });
+  }
+
+  /* --- apparitions au defilement ---------------------------------------- */
+  /* La classe .anime a ete posee dans le <head>. On prend le relais ici :
+     chaque bloc devient visible quand il entre dans l'ecran, avec un leger
+     decalage entre voisins. Un bloc deja visible au chargement apparait tout
+     de suite, sans attendre un defilement. */
+
+  var racine = document.documentElement;
+
+  if (racine.classList.contains("anime") && "IntersectionObserver" in window) {
+    racine.dataset.anim = "ok";
+
+    var groupes = [
+      ".hero__grille > *",
+      ".faits ul",
+      ".grille > *",
+      ".duo > *",
+      ".numerotee > li",
+      ".citations > .citation",
+      ".rappel__grille > *",
+      ".section > .wrap:not(.article) > .surtitre",
+      ".section > .wrap:not(.article) > h1",
+      ".section > .wrap:not(.article) > h2",
+      ".section > .wrap:not(.article) > p",
+      ".section > .wrap:not(.article) > .boutons",
+      ".section > .wrap:not(.article) > .faq",
+      ".section > .wrap:not(.article) > .citation",
+      ".section > .wrap:not(.article) > .avertissement",
+      ".section > .wrap:not(.article) > .tableau-enveloppe",
+      ".section > .wrap:not(.article) > .liste-nue",
+      ".section > .wrap:not(.article) > .coches"
+    ];
+
+    var blocs = [];
+    groupes.forEach(function (selecteur) {
+      Array.prototype.forEach.call(document.querySelectorAll(selecteur), function (el) {
+        if (blocs.indexOf(el) === -1) { blocs.push(el); }
+      });
+    });
+
+    /* decalage : au maximum trois crans, pour ne jamais faire attendre */
+    blocs.forEach(function (el) {
+      var voisins = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+      el.style.setProperty("--retard", Math.min(voisins, 3) * 90 + "ms");
+    });
+
+    var reste = blocs.slice();
+
+    var montrer = function (el) {
+      el.classList.add("est-visible");
+      var i = reste.indexOf(el);
+      if (i !== -1) { reste.splice(i, 1); }
+    };
+
+    var observateur = new IntersectionObserver(
+      function (entrees) {
+        entrees.forEach(function (entree) {
+          if (entree.isIntersecting) {
+            montrer(entree.target);
+            observateur.unobserve(entree.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 }
+    );
+
+    /* Filet de securite : si l'observateur ne repond pas (navigateur exotique,
+       onglet en arriere-plan), un balayage au defilement fait le meme travail.
+       Aucun bloc ne peut donc rester invisible. */
+    var balayer = function () {
+      var haut = window.innerHeight * 0.94;
+      reste.slice().forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < haut && r.bottom > -50) { montrer(el); observateur.unobserve(el); }
+      });
+      if (!reste.length) { window.removeEventListener("scroll", balayer); }
+    };
+
+    blocs.forEach(function (el) { observateur.observe(el); });
+    balayer();
+    window.addEventListener("scroll", balayer, { passive: true });
+    window.addEventListener("resize", balayer, { passive: true });
+    setTimeout(balayer, 400);
   }
 
   /* --- annee courante --------------------------------------------------- */

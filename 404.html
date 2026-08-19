@@ -21,6 +21,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
 <link rel="stylesheet" href="/lea-cazaux-naturopathe/assets/css/site.css">
+<script>
+/* Active les apparitions au defilement, sauf si le visiteur a demande a reduire
+   les animations. La classe est retiree si site.js ne prend pas le relais. */
+(function () {
+  var d = document.documentElement;
+  if (!("IntersectionObserver" in window)) { return; }
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
+  d.className = "anime";
+  setTimeout(function () { if (d.dataset.anim !== "ok") { d.className = ""; } }, 2500);
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,7 +44,7 @@
   <header class="entete">
     <div class="wrap entete__inner">
       <a class="marque" href="/lea-cazaux-naturopathe/" aria-label="Léa Cazaux, naturopathe, retour à l'accueil">
-        <img class="marque__sigle" src="/lea-cazaux-naturopathe/assets/img/monogramme.svg" alt="" width="34" height="34">
+        <img class="marque__sigle" src="/lea-cazaux-naturopathe/assets/img/monogramme.svg" alt="" width="40" height="40">
         <span class="marque__nom">Léa Cazaux<small>Naturopathe · Juillan</small></span>
       </a>
       <button class="burger" data-burger type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
