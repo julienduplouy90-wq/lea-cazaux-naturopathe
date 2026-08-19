@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Emplacement reserve a la photo du cabinet">
+  <defs>
+    <pattern id="hachures-cabinet" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#1b1e1a" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="600" fill="#ece7dc"/>
+  <rect width="800" height="600" fill="url(#hachures-cabinet)"/>
+  <g fill="none" stroke="#3e5b4a" stroke-opacity="0.55" stroke-width="2">
+    <rect x="250" y="180" width="300" height="200"/>
+    <path d="M250 180 L400 90 L550 180"/>
+    <rect x="370" y="290" width="60" height="90"/>
+  </g>
+  <line x1="200" y1="430" x2="600" y2="430" stroke="#a8622f" stroke-opacity="0.6" stroke-width="2"/>
+  <text x="400" y="478" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#5a625a">Photo du cabinet a venir</text>
+  <text x="400" y="512" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" letter-spacing="2" fill="#5a625a">FORMAT 4:3</text>
+</svg>

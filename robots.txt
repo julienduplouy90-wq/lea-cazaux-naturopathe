@@ -1,0 +1,9 @@
+# Site de demonstration : indexation bloquee.
+# Chaque page porte egalement une balise <meta name="robots" content="noindex, nofollow">.
+User-agent: *
+Disallow: /
+
+# --- Version a activer lors du passage en production reelle -----------------
+# User-agent: *
+# Allow: /
+# Sitemap: https://julienduplouy90-wq.github.io/lea-cazaux-naturopathe/sitemap.xml

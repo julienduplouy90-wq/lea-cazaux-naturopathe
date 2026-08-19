@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800" role="img" aria-label="Emplacement reserve au portrait de la praticienne">
+  <defs>
+    <pattern id="hachures-portrait" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#1b1e1a" stroke-opacity="0.06" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="600" height="800" fill="#ece7dc"/>
+  <rect width="600" height="800" fill="url(#hachures-portrait)"/>
+  <g fill="none" stroke="#3e5b4a" stroke-opacity="0.55" stroke-width="2">
+    <circle cx="300" cy="330" r="72"/>
+    <path d="M186 500c0-63 51-114 114-114s114 51 114 114"/>
+  </g>
+  <line x1="150" y1="560" x2="450" y2="560" stroke="#a8622f" stroke-opacity="0.6" stroke-width="2"/>
+  <text x="300" y="606" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#5a625a">Portrait a venir</text>
+  <text x="300" y="640" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" letter-spacing="2" fill="#5a625a">FORMAT 3:4</text>
+</svg>
