@@ -33,8 +33,16 @@ Avant d'écrire ou de modifier quoi que ce soit, charger la compétence correspo
    de bibliothèque, pas de traceur.
 4. **Un seul `<h1>` par page**, hiérarchie de titres continue.
 5. **Aucune URL ne change** après la mise en ligne (voir `docs/03-structure.md`).
-6. **Interdits de design** : dégradés, ombres portées, `border-radius` au-delà de 2px sur les blocs,
-   emojis, animations d'apparition au scroll.
+6. **Le design suit les jetons CSS**, jamais des valeurs en dur : couleurs (`--sable`, `--ecorce`,
+   `--foret`, `--terre`, `--miel`), rayons (`--r-s` à `--r-xl`, `--r-pilule`), ombres (`--ombre-1`
+   à `--ombre-3`). Une couleur qui porte du texte doit passer 4,5:1 : `--terre` est décorative,
+   `--terre-texte` est sa version lisible. Interdits : dégradés criards, ombres grises ou bleutées,
+   blobs, verre dépoli, emojis, parallaxe, animations de plus d'une seconde.
+7. **Les animations ne conditionnent jamais la lecture.** La classe `anime` est posée par un script
+   dans le `<head>` : sans JavaScript, rien n'est masqué. Tout est neutralisé sous
+   `prefers-reduced-motion: reduce`. Si un nouveau bloc doit apparaître au défilement, l'ajouter
+   **à la fois** dans la liste de sélecteurs du CSS et dans celle de `assets/js/site.js` : les deux
+   listes doivent rester identiques, sinon le bloc reste invisible.
 
 ## Cadre légal du métier
 
