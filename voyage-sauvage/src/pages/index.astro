@@ -145,7 +145,21 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
           etapes.map((e) => (
             <article class="etape anime">
               <div class="etape__scene">
-                <SceneEtape type={e.scene} />
+                {e.photo ? (
+                  <picture>
+                    <source srcset={`${base}${e.photo}.webp`} type="image/webp" />
+                    <img
+                      src={`${base}${e.photo}.jpg`}
+                      alt={e.alt}
+                      width="880"
+                      height="385"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                ) : (
+                  <SceneEtape type={e.scene} />
+                )}
               </div>
               <div class="etape__corps">
                 <p class="etape__dates">{e.dates}</p>

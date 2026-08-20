@@ -62,6 +62,8 @@ export const etapes = [
   {
     id: 'cap',
     scene: 'cap',
+    photo: '/img/etapes/cap',
+    alt: 'La montagne de la Table et la baie du Cap depuis la plage',
     nom: 'Le Cap',
     dates: '5 → 10 novembre',
     mots: 'Océan · Rando · Liberté',
@@ -72,6 +74,8 @@ export const etapes = [
   {
     id: 'panorama',
     scene: 'panorama',
+    photo: '/img/etapes/panorama',
+    alt: 'Route en lacets surplombant le Blyde River Canyon et les Three Rondavels',
     nom: 'Route Panorama',
     dates: '10 → 13 novembre',
     mots: 'Cascades · Canyon · Route mythique',
@@ -82,6 +86,8 @@ export const etapes = [
   {
     id: 'kruger',
     scene: 'kruger',
+    photo: '/img/etapes/kruger',
+    alt: 'Éléphant traversant une piste devant un véhicule de safari, près d’un point d’eau',
     nom: 'Parc Kruger',
     dates: '13 → 17 novembre',
     mots: 'Safari · Nature sauvage · Lever de soleil',
