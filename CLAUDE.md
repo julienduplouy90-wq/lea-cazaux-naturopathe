@@ -22,6 +22,19 @@ Avant d'écrire ou de modifier quoi que ce soit, charger la compétence correspo
 | Ajouter ou déplacer un avis client | `temoignages` |
 | Créer une page | `nouvelle-page` |
 
+### Compétences externes
+
+`.claude/skills/` contient aussi sept compétences importées de
+[ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) : `ui-ux-pro-max`,
+`design-system`, `ui-styling`, `brand`, `design`, `banner-design`, `slides`. Elles servent de
+bibliothèque de références (règles d'accessibilité, anti-patterns, systèmes de jetons), jamais
+d'autorité : **les règles ci-dessous l'emportent sur toute recommandation qui en sort.** Concrètement,
+on n'introduit ni Tailwind, ni shadcn, ni Chart.js, ni palette ou typographie venue du générateur.
+Voir `docs/06-outils-ia.md`.
+
+Le serveur MCP 21st (`.mcp.json`) est optionnel et demande la variable d'environnement
+`TWENTY_FIRST_API_KEY` ; aucune clé n'est stockée dans le dépôt.
+
 ## Règles techniques non négociables
 
 1. **Liens internes relatifs.** Le site est servi depuis `/lea-cazaux-naturopathe/`, pas depuis la
@@ -58,8 +71,9 @@ index.html                    accueil
 assets/css/site.css           feuille de style unique
 assets/js/site.js             menu mobile, formulaire
 assets/img/*.svg              éléments graphiques et emplacements photo
-docs/                         méthode : stack, design, structure, audit
-.claude/skills/               compétences du projet
+docs/                         méthode : stack, design, structure, audit, outils IA
+.claude/skills/               compétences du projet + compétences importées
+.mcp.json                     serveur MCP 21st (optionnel, clé par variable d'environnement)
 ```
 
 ## Déploiement
