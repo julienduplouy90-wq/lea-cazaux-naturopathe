@@ -18,6 +18,8 @@ import {
   conditions,
   LIEN_RESERVATION,
 } from '../data/voyage.js';
+
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 ---
 
 <Base>
@@ -30,11 +32,11 @@ import {
       loop
       playsinline
       preload="metadata"
-      poster="/img/poster.webp"
+      poster={`${base}/img/poster.webp`}
       aria-hidden="true"
       tabindex="-1"
     >
-      <source src="/videos/savane.mp4" type="video/mp4" />
+      <source src={`${base}/videos/savane.mp4`} type="video/mp4" />
     </video>
     <div class="heros__voile" aria-hidden="true"></div>
     <div class="conteneur">
@@ -83,9 +85,9 @@ import {
                 {animal.type === 'scene' && <SceneFaune type={animal.scene} />}
                 {animal.type === 'photo' && (
                   <picture>
-                    <source srcset={`${animal.src}.webp`} type="image/webp" />
+                    <source srcset={`${base}${animal.src}.webp`} type="image/webp" />
                     <img
-                      src={`${animal.src}.jpg`}
+                      src={`${base}${animal.src}.jpg`}
                       alt={animal.alt}
                       width="540"
                       height="720"

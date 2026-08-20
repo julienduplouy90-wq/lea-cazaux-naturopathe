@@ -7,6 +7,7 @@ const description =
   'Yoga, safaris et grands espaces d’Afrique du Sud : 13 jours du Cap au parc Kruger, du 5 au 17 novembre 2026, avec Pauline de Yoga Liberté. 2 800 € par personne.';
 const titre = `${infos.titre} — Yoga & Safari en Afrique du Sud | Novembre 2026`;
 const urlCanonique = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
 const donneesStructurees = {
   '@context': 'https://schema.org',
@@ -28,7 +29,10 @@ const donneesStructurees = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{titre}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {/* noindex tant que la réservation est un lien provisoire et que la
+        vidéo n'est pas licenciée — à retirer pour la mise en production. */}
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
     {urlCanonique && <link rel="canonical" href={urlCanonique} />}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={titre} />
