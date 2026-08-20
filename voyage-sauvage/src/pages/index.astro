@@ -1,0 +1,316 @@
+---
+import Base from '../layouts/Base.astro';
+import SceneHeros from '../components/SceneHeros.astro';
+import SceneEtape from '../components/SceneEtape.astro';
+import SceneFinal from '../components/SceneFinal.astro';
+import Icone from '../components/Icone.astro';
+import {
+  infos,
+  chiffres,
+  etapes,
+  tempsForts,
+  itineraire,
+  guides,
+  inclus,
+  nonInclus,
+  conditions,
+  LIEN_RESERVATION,
+} from '../data/voyage.js';
+---
+
+<Base>
+  <!-- ── Héros ─────────────────────────────── -->
+  <section class="heros" id="haut">
+    <video class="heros__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+      <source src="/videos/savane.mp4" type="video/mp4" />
+    </video>
+    <div class="heros__voile" aria-hidden="true"></div>
+    <div class="conteneur">
+      <div class="heros__contenu">
+        <p class="heros__dates">{infos.destination} · {infos.dates}</p>
+        <h1>13 jours pour <em>redevenir sauvage</em></h1>
+        <p class="heros__accroche">
+          Yoga au lever du soleil, safaris dans le Kruger, baleines d’Hermanus et sommets du Cap :
+          un voyage qui respire, du premier souffle au dernier rugissement.
+        </p>
+        <p class="heros__actions">
+          <a class="btn btn--plein btn--grand" href="#reserver">Je réserve ma place</a>
+          <a class="btn btn--contour btn--grand" href="#itineraire">Découvrir l’itinéraire</a>
+        </p>
+        <ul class="heros__chiffres">
+          {
+            chiffres.map((c) => (
+              <li>
+                <strong>{c.valeur}</strong>
+                <span>{c.legende}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="heros__scene"><SceneHeros /></div>
+  </section>
+
+  <!-- ── Promesse ──────────────────────────── -->
+  <section class="section promesse">
+    <div class="conteneur anime">
+      <span class="promesse__ornement" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2.5 v3 M12 18.5 v3 M2.5 12 h3 M18.5 12 h3 M5.3 5.3 l2.1 2.1 M16.6 16.6 l2.1 2.1 M18.7 5.3 l-2.1 2.1 M7.4 16.6 l-2.1 2.1" />
+        </svg>
+      </span>
+      <blockquote>
+        Des montagnes du Cap aux terres sauvages du Kruger, ce voyage est une invitation à
+        <em>respirer</em>, <em>ralentir</em> et <em>se reconnecter</em> à ce qui compte vraiment.
+      </blockquote>
+      <ul class="promesse__verbes">
+        <li>Se reconnecter</li>
+        <li>Observer</li>
+        <li>Explorer</li>
+        <li>S’épanouir</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Les trois étapes ──────────────────── -->
+  <section class="section section--creme">
+    <div class="conteneur">
+      <div class="anime">
+        <p class="surtitre"><span>01</span>L’itinéraire</p>
+        <h2>Trois mondes, un seul voyage</h2>
+        <p class="section-intro">
+          De l’océan Atlantique au bush du Kruger, chaque étape a sa couleur, son rythme et ses
+          merveilles.
+        </p>
+      </div>
+      <div class="etapes__grille">
+        {
+          etapes.map((e) => (
+            <article class="etape anime">
+              <div class="etape__scene">
+                <SceneEtape type={e.scene} />
+              </div>
+              <div class="etape__corps">
+                <p class="etape__dates">{e.dates}</p>
+                <h3>{e.nom}</h3>
+                <p class="etape__mots">{e.mots}</p>
+                <p>{e.texte}</p>
+                <ul class="etape__lieux">
+                  {e.lieux.map((l) => (
+                    <li>{l}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Temps forts ───────────────────────── -->
+  <section class="section">
+    <div class="conteneur">
+      <div class="anime">
+        <p class="surtitre"><span>02</span>Les temps forts</p>
+        <h2>Ce que vous vivrez là-bas</h2>
+      </div>
+      <div class="forts__grille">
+        {
+          tempsForts.map((f) => (
+            <article class="fort anime">
+              <span class="fort__icone">
+                <Icone nom={f.icone} />
+              </span>
+              <div>
+                <h3>{f.titre}</h3>
+                <p>{f.texte}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Itinéraire jour par jour ──────────── -->
+  <section class="section section--creme" id="itineraire">
+    <div class="conteneur">
+      <div class="anime">
+        <p class="surtitre"><span>03</span>Jour par jour</p>
+        <h2>Le programme complet</h2>
+        <p class="section-intro">
+          Douze nuits pensées pour alterner aventure, contemplation et pratiques : dépliez chaque
+          journée pour découvrir le détail.
+        </p>
+      </div>
+      {
+        itineraire.map((groupe) => (
+          <div class={`itineraire__groupe groupe--${groupe.couleur} anime`}>
+            <header class="groupe__entete">
+              <span class="groupe__pastille" aria-hidden="true" />
+              <h3>
+                {groupe.etape}
+                <span class="groupe__sous-titre">{groupe.sousTitre}</span>
+              </h3>
+            </header>
+            {groupe.jours.map((jour) => (
+              <details class="jour">
+                <summary>
+                  <span class="jour__date">{jour.date}</span>
+                  <span class="jour__titre">{jour.titre}</span>
+                  <span class="jour__plus" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                      <path d="M12 5 v14 M5 12 h14" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="jour__contenu">
+                  {jour.moments.map((m) => (
+                    <div class="moment">
+                      <b>{m.label}</b>
+                      <p>{m.texte}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ── Guides ────────────────────────────── -->
+  <section class="section">
+    <div class="conteneur">
+      <div class="anime">
+        <p class="surtitre"><span>04</span>Vos guides</p>
+        <h2>Deux passionnées pour vous accompagner</h2>
+      </div>
+      <div class="guides__grille">
+        {
+          guides.map((g) => (
+            <article class="guide anime">
+              <span class="guide__portrait" aria-hidden="true">
+                {g.initiale}
+              </span>
+              <h3>
+                {g.nom}
+                <span class="guide__role">{g.role}</span>
+              </h3>
+              <ul class="guide__tags">
+                {g.tags.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+              <p>{g.bio}</p>
+              {g.citation && <blockquote>« {g.citation} »</blockquote>}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Citation ──────────────────────────── -->
+  <section class="section section--nuit citation">
+    <div class="conteneur anime">
+      <figure style="margin:0">
+        <blockquote>
+          « La nature est notre plus grande alliée et notre plus grande source d’inspiration. »
+        </blockquote>
+        <figcaption>David Attenborough</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── Inclus / non inclus ───────────────── -->
+  <section class="section">
+    <div class="conteneur">
+      <div class="anime">
+        <p class="surtitre"><span>05</span>En toute transparence</p>
+        <h2>Ce qui est inclus (et ce qui ne l’est pas)</h2>
+      </div>
+      <div class="inclus__grille">
+        <div class="inclus__carte anime">
+          <h3>Inclus dans le voyage</h3>
+          <ul>
+            {
+              inclus.map((element) => (
+                <li>
+                  <span class="inclus__puce">
+                    <Icone nom="coche" />
+                  </span>
+                  {element}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="inclus__carte inclus__carte--non anime">
+          <h3>À prévoir en plus</h3>
+          <ul>
+            {
+              nonInclus.map((element) => (
+                <li>
+                  <span class="inclus__puce">
+                    <Icone nom="tiret" />
+                  </span>
+                  {element}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tarif & réservation ───────────────── -->
+  <section class="section section--creme tarif" id="reserver">
+    <div class="conteneur">
+      <div class="anime centre" style="text-align:center">
+        <p class="surtitre"><span>06</span>Tarif & réservation</p>
+        <h2>Votre place au cœur du sauvage</h2>
+      </div>
+      <div class="tarif__carte anime">
+        <p style="margin:0">
+          <span class="tarif__prix">{infos.prix}</span>
+          <span class="tarif__detail">{infos.prixDetail}</span>
+        </p>
+        <ul class="tarif__conditions">
+          {
+            conditions.map((c) => (
+              <li>
+                <span class="inclus__puce">
+                  <Icone nom="coche" />
+                </span>
+                {c}
+              </li>
+            ))
+          }
+        </ul>
+        <a class="btn btn--plein btn--grand" href={LIEN_RESERVATION}>Je réserve ma place</a>
+        <p class="tarif__note">
+          Réponse personnelle de Pauline sous 48 h — poser une question n’engage à rien.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Appel final ───────────────────────── -->
+  <section class="final">
+    <div class="conteneur anime">
+      <h2>La savane n’attend que <em>vous</em></h2>
+      <p>
+        En novembre 2026, quelque part entre l’océan et le bush, une version plus libre de
+        vous-même vous attend déjà. Il ne manque que votre oui.
+      </p>
+      <a class="btn btn--plein btn--grand" href={LIEN_RESERVATION}>Répondre à l’appel du sauvage</a>
+    </div>
+    <div class="final__scene"><SceneFinal /></div>
+  </section>
+</Base>
