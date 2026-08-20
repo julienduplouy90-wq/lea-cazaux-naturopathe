@@ -1,0 +1,78 @@
+---
+// Vignettes illustrées des trois étapes du voyage, dans le même langage
+// graphique que le héros. `type` : 'cap' | 'panorama' | 'kruger'.
+const { type } = Astro.props;
+---
+
+{
+  type === 'cap' && (
+    <svg viewBox="0 0 640 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true" role="presentation">
+      <rect width="640" height="280" fill="#cfe3e2" />
+      <circle cx="524" cy="66" r="40" fill="#d9a441" />
+      <g stroke="#24444f" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7">
+        <path d="M120 60 q8 -10 16 0 q8 -10 16 0" />
+        <path d="M190 40 q6 -8 12 0 q6 -8 12 0" />
+      </g>
+      <path d="M40 178 L156 84 H420 L540 178 Z" fill="#33564f" />
+      <path d="M156 84 H420 L400 100 H176 Z" fill="#2a4741" />
+      <rect y="172" width="640" height="108" fill="#2e5e6e" />
+      <g stroke="#cfe3e2" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.45">
+        <path d="M60 208 q20 -10 40 0 q20 -10 40 0" />
+        <path d="M300 232 q20 -10 40 0 q20 -10 40 0" />
+        <path d="M470 210 q20 -10 40 0 q20 -10 40 0" />
+        <path d="M150 254 q20 -10 40 0 q20 -10 40 0" />
+      </g>
+    </svg>
+  )
+}
+
+{
+  type === 'panorama' && (
+    <svg viewBox="0 0 640 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true" role="presentation">
+      <rect width="640" height="280" fill="#f0d9b8" />
+      <circle cx="104" cy="70" r="38" fill="#d9a441" />
+      <path d="M360 190 L420 96 L480 190 Z" fill="#c2542e" opacity="0.45" />
+      <path d="M430 190 L500 80 L580 190 Z" fill="#c2542e" opacity="0.45" />
+      <g fill="#a3431f">
+        <path d="M120 200 V120 q0 -26 34 -26 q34 0 34 26 V200 Z" />
+        <path d="M212 200 V106 q0 -28 36 -28 q36 0 36 28 V200 Z" />
+        <path d="M308 200 V126 q0 -24 30 -24 q30 0 30 24 V200 Z" />
+      </g>
+      <g fill="#7c3115">
+        <path d="M116 124 q38 -14 76 0 l-4 10 q-34 -12 -68 0 Z" />
+        <path d="M208 110 q40 -14 80 0 l-4 10 q-36 -12 -72 0 Z" />
+        <path d="M304 130 q34 -12 68 0 l-4 10 q-30 -10 -60 0 Z" />
+      </g>
+      <path d="M0 208 Q160 190 320 202 T640 198 L640 280 0 280 Z" fill="#8a5a2e" />
+      <path d="M0 236 Q200 222 380 232 T640 228 L640 280 0 280 Z" fill="#2e5e6e" />
+    </svg>
+  )
+}
+
+{
+  type === 'kruger' && (
+    <svg viewBox="0 0 640 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true" role="presentation">
+      <rect width="640" height="280" fill="#eec27f" />
+      <circle cx="320" cy="196" r="86" fill="#d9682e" />
+      <g stroke="#241a11" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8">
+        <path d="M430 74 q8 -10 16 0 q8 -10 16 0" />
+        <path d="M490 104 q6 -8 12 0 q6 -8 12 0" />
+      </g>
+      <rect y="206" width="640" height="74" fill="#241a11" />
+      <g fill="#1c1209">
+        <path d="M120 212 C122 184 114 164 104 148 L112 146 C122 162 130 184 130 212 Z" />
+        <path d="M122 178 C138 166 154 160 172 156 L174 162 C156 166 142 174 130 184 Z" />
+        <ellipse cx="104" cy="140" rx="54" ry="13" />
+        <ellipse cx="152" cy="152" rx="36" ry="10" />
+        <rect x="452" y="170" width="88" height="36" rx="17" />
+        <rect x="458" y="192" width="11" height="20" rx="4" />
+        <rect x="476" y="196" width="11" height="16" rx="4" />
+        <rect x="502" y="196" width="11" height="16" rx="4" />
+        <rect x="520" y="192" width="11" height="20" rx="4" />
+        <circle cx="449" cy="174" r="16" />
+        <path d="M440 168 C433 161 423 161 418 168 C425 168 430 171 433 178 C436 174 440 171 440 168 Z" />
+        <path d="M440 180 C435 190 434 198 437 208 L442 206 C440 198 442 190 447 183 Z" />
+      </g>
+    </svg>
+  )
+}

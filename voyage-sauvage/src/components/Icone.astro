@@ -1,0 +1,61 @@
+---
+// Petites icônes de la page, tracées à la main pour rester sans dépendance.
+// `nom` : vague | baleine | montagne | soleil | lotus | assiette | coche | tiret
+const { nom } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  role="presentation"
+>
+  {nom === 'vague' && (
+    <>
+      <path d="M2 9.5 q2.5 -3 5 0 t5 0 t5 0 t5 0" />
+      <path d="M2 15 q2.5 -3 5 0 t5 0 t5 0 t5 0" />
+    </>
+  )}
+  {nom === 'baleine' && (
+    <path d="M12 20 C10.5 14.5 6.5 12.5 4 5.5 C9 7.5 11 10 12 13 C13 10 15 7.5 20 5.5 C17.5 12.5 13.5 14.5 12 20 Z" fill="currentColor" stroke="none" />
+  )}
+  {nom === 'montagne' && (
+    <>
+      <path d="M3 18.5 L9.5 7.5 L13.5 13.5 L16 9.5 L21 18.5 Z" />
+      <path d="M8 10.5 L9.5 12 L11 10.5" />
+    </>
+  )}
+  {nom === 'soleil' && (
+    <>
+      <path d="M5.5 16 a6.5 6.5 0 0 1 13 0" />
+      <path d="M2.5 16 h19" />
+      <path d="M12 4.5 v2" />
+      <path d="M5 8 l1.4 1.4" />
+      <path d="M19 8 l-1.4 1.4" />
+      <path d="M6 20 h12" />
+    </>
+  )}
+  {nom === 'lotus' && (
+    <>
+      <path d="M12 5 C10 8 10 12 12 15 C14 12 14 8 12 5 Z" />
+      <path d="M5 9 C6 13 8.5 15.5 12 15 C10.5 12 8.5 10 5 9 Z" />
+      <path d="M19 9 C18 13 15.5 15.5 12 15 C13.5 12 15.5 10 19 9 Z" />
+      <path d="M6 18 q6 3 12 0" />
+    </>
+  )}
+  {nom === 'assiette' && (
+    <>
+      <circle cx="13.5" cy="12" r="7" />
+      <circle cx="13.5" cy="12" r="3.2" />
+      <path d="M4 5 v6" />
+      <path d="M2.6 5 v3 a1.4 1.4 0 0 0 2.8 0 v-3" />
+      <path d="M4 13 v6" />
+    </>
+  )}
+  {nom === 'coche' && <path d="M4.5 12.5 L10 18 L19.5 7" />}
+  {nom === 'tiret' && <path d="M6 12 h12" />}
+</svg>

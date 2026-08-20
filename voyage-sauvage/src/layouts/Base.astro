@@ -1,0 +1,150 @@
+---
+import '@fontsource-variable/fraunces';
+import '../styles/global.css';
+import { infos, LIEN_RESERVATION } from '../data/voyage.js';
+
+const description =
+  'Yoga, safaris et grands espaces d’Afrique du Sud : 13 jours du Cap au parc Kruger, du 5 au 17 novembre 2026, avec Pauline de Yoga Liberté. 2 800 € par personne.';
+const titre = `${infos.titre} — Yoga & Safari en Afrique du Sud | Novembre 2026`;
+const urlCanonique = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
+
+const donneesStructurees = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: `${infos.titre} — Yoga & Safari en Afrique du Sud`,
+  description,
+  startDate: '2026-11-05',
+  endDate: '2026-11-17',
+  eventStatus: 'https://schema.org/EventScheduled',
+  location: { '@type': 'Place', name: 'Afrique du Sud — Le Cap, Route Panorama, Parc Kruger', address: { '@type': 'PostalAddress', addressCountry: 'ZA' } },
+  organizer: { '@type': 'Organization', name: 'Yoga Liberté' },
+  offers: { '@type': 'Offer', price: '2800', priceCurrency: 'EUR' },
+};
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titre}</title>
+    <meta name="description" content={description} />
+    {/* noindex tant que la réservation est un lien provisoire et que la
+        vidéo n'est pas licenciée — à retirer pour la mise en production. */}
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href={`${base}/favicon.svg`} type="image/svg+xml" />
+    {urlCanonique && <link rel="canonical" href={urlCanonique} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={titre} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="fr_FR" />
+    {urlCanonique && <meta property="og:url" content={urlCanonique} />}
+    <script type="application/ld+json" set:html={JSON.stringify(donneesStructurees)} />
+    <script is:inline>
+      // Posé dans le <head> pour éviter tout éclair de contenu masqué :
+      // sans JavaScript, la classe « js » est absente et rien n'est caché.
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <header class="entete">
+      <div class="conteneur">
+        <a class="marque" href="#haut">Yoga Liberté</a>
+        <a class="btn btn--plein" href="#reserver">Réserver ma place</a>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="pied">
+      <div class="conteneur">
+        <p style="margin:0">
+          © 2026 Yoga Liberté — {infos.titre}
+        </p>
+        <p style="margin:0">
+          <a href={LIEN_RESERVATION}>Une question ? Écrivez à Pauline</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="barre-cta" id="barre-cta" aria-hidden="true">
+      <p class="barre-cta__infos" style="margin:0">
+        <strong>{infos.prix} <span style="font-size:.8rem">/ pers.</span></strong>
+        <span>{infos.datesCourtes} · {infos.duree}</span>
+      </p>
+      <a class="btn btn--plein" href="#reserver" tabindex="-1">Réserver</a>
+    </div>
+
+    <script is:inline>
+      (function () {
+        var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Apparition douce des blocs au défilement.
+        var blocs = document.querySelectorAll('.anime');
+        if (!reduit && 'IntersectionObserver' in window) {
+          var obs = new IntersectionObserver(
+            function (entrees) {
+              entrees.forEach(function (e) {
+                if (e.isIntersecting) {
+                  e.target.classList.add('visible');
+                  obs.unobserve(e.target);
+                }
+              });
+            },
+            { rootMargin: '0px 0px -8% 0px' }
+          );
+          blocs.forEach(function (b) {
+            obs.observe(b);
+          });
+        } else {
+          blocs.forEach(function (b) {
+            b.classList.add('visible');
+          });
+        }
+
+        // La vidéo du héros s'arrête hors écran (batterie, données) et
+        // reste coupée si l'utilisateur préfère limiter les animations.
+        var video = document.querySelector('.heros__video');
+        if (video) {
+          if (reduit) {
+            video.removeAttribute('autoplay');
+            video.pause();
+          } else if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (e) {
+              if (e[0].isIntersecting) {
+                video.play().catch(function () {});
+              } else {
+                video.pause();
+              }
+            }).observe(video);
+          }
+        }
+
+        // Barre de réservation mobile : visible une fois le héros dépassé.
+        var barre = document.getElementById('barre-cta');
+        var heros = document.getElementById('haut');
+        var tarif = document.getElementById('reserver');
+        if (barre && heros && 'IntersectionObserver' in window) {
+          var herosVisible = true;
+          var tarifVisible = false;
+          var maj = function () {
+            var afficher = !herosVisible && !tarifVisible;
+            barre.classList.toggle('visible', afficher);
+            barre.setAttribute('aria-hidden', afficher ? 'false' : 'true');
+            barre.querySelector('a').tabIndex = afficher ? 0 : -1;
+          };
+          new IntersectionObserver(function (e) {
+            herosVisible = e[0].isIntersecting;
+            maj();
+          }).observe(heros);
+          if (tarif) {
+            new IntersectionObserver(function (e) {
+              tarifVisible = e[0].isIntersecting;
+              maj();
+            }).observe(tarif);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

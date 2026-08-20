@@ -1,0 +1,65 @@
+{/* Scène de savane au couchant : soleil, collines, acacia, éléphant et girafe.
+    Silhouettes stylisées, très légères — à remplacer un jour par une vraie photo
+    si souhaité (voir README). */}
+<svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true" role="presentation">
+  <!-- Soleil et halo -->
+  <circle cx="1040" cy="185" r="175" fill="#ffd98a" opacity="0.22" />
+  <circle cx="1040" cy="185" r="108" fill="#ffd98a" opacity="0.95" />
+
+  <!-- Oiseaux -->
+  <g stroke="#241a11" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.85">
+    <path d="M880 120 q9 -11 18 0 q9 -11 18 0" />
+    <path d="M950 88 q7 -9 14 0 q7 -9 14 0" />
+    <path d="M840 170 q6 -8 12 0 q6 -8 12 0" />
+  </g>
+
+  <!-- Collines -->
+  <path d="M0 292 C240 252 480 272 720 258 C960 244 1200 268 1440 246 L1440 400 0 400 Z" fill="#8a4a26" opacity="0.55" />
+  <path d="M0 322 C200 302 420 318 640 308 C900 295 1180 318 1440 302 L1440 400 0 400 Z" fill="#5c2f16" opacity="0.85" />
+  <path d="M0 348 C300 334 700 342 1050 336 C1200 334 1330 334 1440 332 L1440 400 0 400 Z" fill="#241a11" />
+
+  <!-- Acacia -->
+  <g fill="#1c1209">
+    <path d="M212 352 C214 322 206 300 196 282 L204 280 C214 298 222 320 222 352 Z" />
+    <path d="M215 316 C232 302 248 296 266 292 L268 298 C250 302 236 310 222 322 Z" />
+    <path d="M212 308 C198 296 184 290 168 288 L166 294 C182 296 194 304 206 314 Z" />
+    <ellipse cx="196" cy="272" rx="62" ry="15" />
+    <ellipse cx="158" cy="284" rx="40" ry="11" />
+    <ellipse cx="248" cy="286" rx="44" ry="12" />
+  </g>
+
+  <!-- Éléphant -->
+  <g fill="#1c1209">
+    <rect x="896" y="292" width="106" height="50" rx="24" />
+    <rect x="906" y="322" width="14" height="28" rx="5" />
+    <rect x="928" y="328" width="14" height="22" rx="5" />
+    <rect x="958" y="328" width="14" height="22" rx="5" />
+    <rect x="980" y="322" width="14" height="28" rx="5" />
+    <circle cx="890" cy="298" r="24" />
+    <path d="M874 288 C862 278 846 280 840 292 C850 290 858 296 862 306 C868 300 874 294 874 288 Z" />
+    <path d="M872 310 C864 324 862 336 866 350 L874 348 C871 336 873 324 880 314 Z" />
+    <path d="M902 282 C910 272 924 270 932 278 C922 279 912 285 908 294 Z" />
+  </g>
+
+  <!-- Girafe -->
+  <g fill="#1c1209">
+    <ellipse cx="1190" cy="300" rx="34" ry="17" />
+    <rect x="1166" y="304" width="9" height="44" rx="3" />
+    <rect x="1202" y="304" width="9" height="44" rx="3" />
+    <path d="M1210 292 L1236 212 L1247 214 L1226 296 Z" />
+    <ellipse cx="1244" cy="208" rx="13" ry="8" transform="rotate(18 1244 208)" />
+    <path d="M1238 200 L1236 190 L1241 190 L1243 199 Z" />
+    <path d="M1247 199 L1249 190 L1254 191 L1251 200 Z" />
+    <path d="M1160 300 C1152 306 1150 314 1152 322 L1157 320 C1156 314 1158 308 1164 304 Z" />
+  </g>
+
+  <!-- Herbes -->
+  <g stroke="#1c1209" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M420 352 C420 340 416 332 410 326" />
+    <path d="M430 352 C430 338 432 330 438 324" />
+    <path d="M680 348 C680 338 676 330 670 326" />
+    <path d="M690 348 C690 336 694 328 700 324" />
+    <path d="M1350 344 C1350 334 1346 326 1340 322" />
+    <path d="M1360 344 C1360 332 1364 324 1370 320" />
+  </g>
+</svg>
