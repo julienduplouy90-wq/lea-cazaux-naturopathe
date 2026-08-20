@@ -45,6 +45,8 @@ assets/js/site.js                         menu, apparitions, formulaire (9 ko)
 assets/img/                               monogramme, favicon, emplacements photo, image de partage
 docs/                                     la méthode suivie, étape par étape
 .claude/skills/                           compétences du projet (voix, faits, persona, gabarits)
+                                          + compétences UI/UX importées (voir docs/06-outils-ia.md)
+.mcp.json                                 serveur MCP 21st, optionnel, clé par variable d'environnement
 CLAUDE.md                                 règles à charger avant toute modification
 ```
 
@@ -69,6 +71,7 @@ domaine.
 | `docs/02-inspirations-design.md` | Comment éviter le design IA générique, palette, typographie, blocs |
 | `docs/03-structure.md` | Personas, arborescence, correspondance intention de recherche / page |
 | `docs/05-audit.md` | Toutes les vérifications passées avant mise en ligne, et leurs résultats |
+| `docs/06-outils-ia.md` | Compétences UI/UX importées et serveur MCP 21st : ce qu'ils apportent, ce qu'ils ne décident pas |
 
 ## Passer en production (pour un vrai cabinet)
 
