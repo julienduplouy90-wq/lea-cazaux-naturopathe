@@ -102,10 +102,10 @@ const donneesStructurees = {
           });
         }
 
-        // La vidéo du héros s'arrête hors écran (batterie, données) et
-        // reste coupée si l'utilisateur préfère limiter les animations.
-        var video = document.querySelector('.heros__video');
-        if (video) {
+        // Les vidéos d'ambiance ne jouent que lorsqu'elles sont à l'écran
+        // (batterie, données) et restent coupées si l'utilisateur préfère
+        // limiter les animations.
+        document.querySelectorAll('.heros__video, .final__video').forEach(function (video) {
           if (reduit) {
             video.removeAttribute('autoplay');
             video.pause();
@@ -117,8 +117,10 @@ const donneesStructurees = {
                 video.pause();
               }
             }).observe(video);
+          } else if (video.autoplay) {
+            video.play().catch(function () {});
           }
-        }
+        });
 
         // Barre de réservation mobile : visible une fois le héros dépassé.
         var barre = document.getElementById('barre-cta');
