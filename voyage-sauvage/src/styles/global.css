@@ -376,6 +376,64 @@ p {
   color: rgba(253, 250, 242, 0.78);
 }
 
+/* ── Galerie faune ───────────────────────── */
+
+.faune .surtitre {
+  color: var(--ocre);
+}
+
+.faune__intro {
+  max-width: 36rem;
+  margin-inline: auto;
+  color: rgba(253, 250, 242, 0.78);
+}
+
+.faune__grille {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem 1rem;
+  margin-top: 2.8rem;
+}
+
+.faune__carte {
+  margin: 0;
+}
+
+.faune__media {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-m);
+  overflow: hidden;
+  border: 1px solid rgba(217, 164, 65, 0.3);
+  background: #1c1209;
+}
+
+.faune__media svg,
+.faune__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.faune__carte figcaption {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.85rem 0.2rem 0;
+}
+
+.faune__nom {
+  font-family: var(--f-titre);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ocre-clair);
+}
+
+.faune__note {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: rgba(246, 239, 226, 0.65);
+}
+
 /* ── Bande promesse ──────────────────────── */
 
 .promesse {
@@ -1120,6 +1178,16 @@ html.js .anime.visible {
 @media (min-width: 900px) {
   .heros {
     padding-block: 8rem 14rem;
+  }
+
+  .faune__grille {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.6rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .faune__carte:nth-child(even) {
+    margin-top: 2.4rem;
   }
 
   .etapes__grille {

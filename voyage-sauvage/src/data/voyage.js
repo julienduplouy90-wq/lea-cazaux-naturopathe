@@ -23,6 +23,37 @@ export const chiffres = [
   { valeur: '1', legende: 'tapis de yoga face au sauvage' },
 ];
 
+// Galerie faune sous le héros. `type: 'scene'` affiche le portrait d'art
+// (SceneFaune) ; passer à `type: 'photo'` (ou 'video') avec un fichier dans
+// `public/img/faune/` dès qu'une vraie photo premium est disponible.
+export const faune = [
+  {
+    type: 'scene',
+    scene: 'lion',
+    nom: 'Le lion',
+    note: 'Rencontre espérée des game drives, au lever du jour.',
+  },
+  {
+    type: 'scene',
+    scene: 'elephant',
+    nom: 'L’éléphant',
+    note: 'Le géant des rives de la rivière Olifants.',
+  },
+  {
+    type: 'scene',
+    scene: 'hippo',
+    nom: 'L’hippopotame',
+    note: 'Maître discret des points d’eau du Kruger.',
+  },
+  {
+    type: 'photo',
+    src: '/img/faune/girafes',
+    alt: 'Girafes buvant à un point d’eau dans la savane',
+    nom: 'Les girafes',
+    note: 'Les élégantes des plaines, au point d’eau.',
+  },
+];
+
 export const etapes = [
   {
     id: 'cap',

@@ -3,10 +3,12 @@ import Base from '../layouts/Base.astro';
 import SceneHeros from '../components/SceneHeros.astro';
 import SceneEtape from '../components/SceneEtape.astro';
 import SceneFinal from '../components/SceneFinal.astro';
+import SceneFaune from '../components/SceneFaune.astro';
 import Icone from '../components/Icone.astro';
 import {
   infos,
   chiffres,
+  faune,
   etapes,
   tempsForts,
   itineraire,
@@ -21,7 +23,17 @@ import {
 <Base>
   <!-- ── Héros ─────────────────────────────── -->
   <section class="heros" id="haut">
-    <video class="heros__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+    <video
+      class="heros__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="/img/poster.webp"
+      aria-hidden="true"
+      tabindex="-1"
+    >
       <source src="/videos/savane.mp4" type="video/mp4" />
     </video>
     <div class="heros__voile" aria-hidden="true"></div>
@@ -50,6 +62,48 @@ import {
       </div>
     </div>
     <div class="heros__scene"><SceneHeros /></div>
+  </section>
+
+  <!-- ── Galerie faune ─────────────────────── -->
+  <section class="section section--nuit faune">
+    <div class="conteneur">
+      <div class="anime centre" style="text-align:center">
+        <p class="surtitre">Les rencontres</p>
+        <h2>Ceux qui vous attendent <em>là-bas</em></h2>
+        <p class="faune__intro">
+          Lions au petit matin, éléphants au bord des rivières, hippopotames aux points d’eau :
+          le Kruger se découvre une rencontre à la fois.
+        </p>
+      </div>
+      <div class="faune__grille">
+        {
+          faune.map((animal) => (
+            <figure class="faune__carte anime">
+              <div class="faune__media">
+                {animal.type === 'scene' && <SceneFaune type={animal.scene} />}
+                {animal.type === 'photo' && (
+                  <picture>
+                    <source srcset={`${animal.src}.webp`} type="image/webp" />
+                    <img
+                      src={`${animal.src}.jpg`}
+                      alt={animal.alt}
+                      width="540"
+                      height="720"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                )}
+              </div>
+              <figcaption>
+                <span class="faune__nom">{animal.nom}</span>
+                <span class="faune__note">{animal.note}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
   </section>
 
   <!-- ── Promesse ──────────────────────────── -->
