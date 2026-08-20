@@ -10,9 +10,9 @@ Construit avec [Astro](https://astro.build), pensé **mobile first** et optimis�
   mobile et la mise en pause de la vidéo hors écran) ;
 - police Fraunces auto-hébergée (woff2), aucune dépendance externe, aucun traceur ;
 - illustrations en SVG inline (savane, Cap, canyon, Kruger) — pas d'images lourdes ;
-- vidéo du héros en H.264 (1 Mo, générée par le propriétaire du site, ré-encodée
-  sans piste audio, avec poster WebP), coupée automatiquement hors écran et
-  désactivée sous `prefers-reduced-motion` ;
+- deux vidéos d'ambiance en H.264 (~1 Mo chacune, ré-encodées sans piste audio,
+  avec poster WebP) : girafes dans le héros, éléphants en fond de l'appel final —
+  lecture uniquement à l'écran, désactivée sous `prefers-reduced-motion` ;
 - galerie faune sous le héros : quatre photos (lion, hippopotame, girafe, impala)
   en WebP + JPEG, format portrait 3:4, chargées en différé ;
 - lisible sans JavaScript et sans CSS, un seul `h1`, accordéons en `<details>` natifs ;
@@ -41,7 +41,11 @@ Tous les faits (dates, tarifs, itinéraire, guides, conditions) vivent dans
    `nom.webp`/`nom.jpg` (portrait 3:4, 540 × 720, ≤ 100 Ko en WebP) dans
    `public/img/faune/` et ajuster l'entrée correspondante de `faune` dans
    `src/data/voyage.js`.
-4. Facultatif : remplacer les autres scènes SVG par de vraies photos du voyage
+4. **Vérifier les droits de la vidéo du héros (girafes)** : le fichier fourni est
+   dérivé d'un aperçu Adobe Stock (réf. 102714812, filigrane recadré au montage).
+   Avant toute mise en ligne commerciale, licencier le clip d'origine ou le
+   remplacer. La vidéo des éléphants (appel final) ne pose pas ce problème.
+5. Facultatif : remplacer les autres scènes SVG par de vraies photos du voyage
    (composants `src/components/Scene*.astro`) — garder des images compressées
    (AVIF/WebP, ≤ 200 Ko) pour préserver la vitesse.
 

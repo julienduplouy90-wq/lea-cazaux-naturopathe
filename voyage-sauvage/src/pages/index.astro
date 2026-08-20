@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import SceneHeros from '../components/SceneHeros.astro';
 import SceneEtape from '../components/SceneEtape.astro';
-import SceneFinal from '../components/SceneFinal.astro';
 import SceneFaune from '../components/SceneFaune.astro';
 import Icone from '../components/Icone.astro';
 import {
@@ -32,11 +31,11 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
       loop
       playsinline
       preload="metadata"
-      poster={`${base}/img/poster.webp`}
+      poster={`${base}/img/poster-girafes.webp`}
       aria-hidden="true"
       tabindex="-1"
     >
-      <source src={`${base}/videos/savane.mp4`} type="video/mp4" />
+      <source src={`${base}/videos/girafes.mp4`} type="video/mp4" />
     </video>
     <div class="heros__voile" aria-hidden="true"></div>
     <div class="conteneur">
@@ -359,6 +358,19 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
 
   <!-- ── Appel final ───────────────────────── -->
   <section class="final">
+    <video
+      class="final__video"
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster={`${base}/img/poster-elephants.webp`}
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <source src={`${base}/videos/elephants.mp4`} type="video/mp4" />
+    </video>
+    <div class="final__voile" aria-hidden="true"></div>
     <div class="conteneur anime">
       <h2>La savane n’attend que <em>vous</em></h2>
       <p>
@@ -367,6 +379,5 @@ const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
       </p>
       <a class="btn btn--plein btn--grand" href={LIEN_RESERVATION}>Répondre à l’appel du sauvage</a>
     </div>
-    <div class="final__scene"><SceneFinal /></div>
   </section>
 </Base>
