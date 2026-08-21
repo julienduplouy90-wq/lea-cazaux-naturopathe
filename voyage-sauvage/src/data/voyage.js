@@ -17,7 +17,7 @@ export const infos = {
 };
 
 export const chiffres = [
-  { valeur: '13', legende: 'jours d’aventure' },
+  { valeur: '13', legende: 'jours hors du temps' },
   { valeur: '7', legende: 'safaris & game drives' },
   { valeur: '3', legende: 'régions traversées' },
   { valeur: '1', legende: 'tapis de yoga face au sauvage' },
@@ -33,7 +33,7 @@ export const faune = [
     src: '/img/faune/lion',
     alt: 'Lion mâle de profil dans les herbes dorées de la savane',
     nom: 'Le lion',
-    note: 'Rencontre espérée des game drives, au lever du jour.',
+    note: 'Celui que l’on espère à chaque game drive, au lever du jour.',
   },
   {
     type: 'photo',
@@ -54,7 +54,7 @@ export const faune = [
     src: '/img/faune/impala',
     alt: 'Impala mâle dans la lumière dorée, troupeau d’éléphants au loin',
     nom: 'L’impala',
-    note: 'Le plus gracieux des habitants du bush.',
+    note: 'La grâce même, dans la lumière dorée du soir.',
   },
 ];
 
@@ -68,7 +68,7 @@ export const etapes = [
     dates: '5 → 10 novembre',
     mots: 'Océan · Rando · Liberté',
     texte:
-      'Plages sauvages, montagnes majestueuses, énergie vibrante : les premiers jours invitent à ralentir, respirer et retrouver sa liberté intérieure.',
+      'L’océan d’un côté, la montagne de l’autre. Les premiers jours posent le rythme : randonnée au lever du soleil, yoga face à l’Atlantique, dîners au bord de l’eau.',
     lieux: ['Lion’s Head', 'Boulders Beach', 'Camps Bay', 'Cape Point', 'Table Mountain'],
   },
   {
@@ -80,7 +80,7 @@ export const etapes = [
     dates: '10 → 13 novembre',
     mots: 'Cascades · Canyon · Route mythique',
     texte:
-      'Cap sur les terres du nord par l’une des routes les plus spectaculaires du monde : falaises rouges, cascades et points de vue à couper le souffle.',
+      'Cap vers le nord par l’une des routes les plus spectaculaires du monde. Falaises rouges, cascades, points de vue vertigineux — et le silence des grands espaces.',
     lieux: ['Blyde River Canyon', 'God’s Window', 'Three Rondavels'],
   },
   {
@@ -92,18 +92,18 @@ export const etapes = [
     dates: '13 → 17 novembre',
     mots: 'Safari · Nature sauvage · Lever de soleil',
     texte:
-      'Immersion au cœur du mythique parc Kruger : game drives à l’aube, nuits dans le bush et rencontres avec la faune la plus emblématique d’Afrique.',
+      'Le cœur du voyage. Game drives à l’aube, nuits au sein même du parc, et ces instants suspendus où la savane décide de tout.',
     lieux: ['Game drives', 'Rivière Olifants', 'Observation animale'],
   },
 ];
 
 export const tempsForts = [
-  { icone: 'vague', titre: 'Océan & plages', texte: 'Yoga au coucher de soleil sur les plages du Cap' },
-  { icone: 'baleine', titre: 'Baleines & requins', texte: 'Sortie bateau à Hermanus, cage diving à Gansbaai' },
+  { icone: 'vague', titre: 'Océan & plages', texte: 'Yoga au coucher du soleil sur les plages du Cap' },
+  { icone: 'baleine', titre: 'Baleines & requins', texte: 'Tête-à-tête avec les baleines à Hermanus, plongée en cage à Gansbaai' },
   { icone: 'montagne', titre: 'Montagnes', texte: 'Table Mountain au lever du jour, au-dessus des nuages' },
-  { icone: 'soleil', titre: 'Safaris à l’aube', texte: '7 game drives dans le Kruger et ses environs' },
-  { icone: 'lotus', titre: 'Yoga & bien-être', texte: 'Yoga, méditation et shiatsu tout au long du voyage' },
-  { icone: 'assiette', titre: 'Découvertes culinaires', texte: 'Dîners face à l’océan et saveurs locales' },
+  { icone: 'soleil', titre: 'Safaris à l’aube', texte: 'Sept game drives dans le Kruger et ses environs' },
+  { icone: 'lotus', titre: 'Yoga & bien-être', texte: 'Yoga, méditation et shiatsu, au rythme du voyage' },
+  { icone: 'assiette', titre: 'Découvertes culinaires', texte: 'Dîners face à l’océan, saveurs d’Afrique du Sud' },
 ];
 
 export const itineraire = [
@@ -193,7 +193,7 @@ export const itineraire = [
     jours: [
       {
         date: '10 nov.',
-        titre: 'Changement de décor !',
+        titre: 'Changement de décor',
         moments: [
           {
             label: 'Matin',
@@ -215,7 +215,7 @@ export const itineraire = [
         date: '11 nov.',
         titre: 'Blyde River Canyon',
         moments: [
-          { label: 'Matin', texte: 'Départ sur la mythique Panorama Route, pour en prendre plein les yeux.' },
+          { label: 'Matin', texte: 'Départ sur la mythique Panorama Route. La journée s’écrit en points de vue.' },
           {
             label: 'Après-midi',
             texte:
@@ -246,7 +246,7 @@ export const itineraire = [
     jours: [
       {
         date: '13 nov.',
-        titre: 'Birder day & Kruger !',
+        titre: 'Birder day & Kruger',
         moments: [
           {
             label: 'Matin',
@@ -265,7 +265,7 @@ export const itineraire = [
       },
       {
         date: '14 & 15 nov.',
-        titre: 'Game drives !',
+        titre: 'Game drives',
         moments: [
           {
             label: 'Matin',
@@ -292,9 +292,9 @@ export const itineraire = [
       },
       {
         date: '17 nov.',
-        titre: 'Fin de ce merveilleux trip',
+        titre: 'Le dernier lever de soleil',
         moments: [
-          { label: 'Lever du jour', texte: 'Dernier game drive au lever du soleil, pour graver la savane dans nos mémoires.' },
+          { label: 'Lever du jour', texte: 'Dernier game drive au lever du soleil. La savane, une dernière fois, rien que pour vous.' },
           { label: 'Départ', texte: 'Retour vers Hoedspruit et envol vers de nouvelles aventures…' },
         ],
       },
