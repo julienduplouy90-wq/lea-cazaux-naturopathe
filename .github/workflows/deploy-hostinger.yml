@@ -1,0 +1,66 @@
+# Déploie le site « Voyage au cœur du Sauvage » sur l'hébergement Hostinger.
+#
+# À configurer une seule fois — Settings → Secrets and variables → Actions :
+#   FTP_SERVER    hôte FTP donné par hPanel (ex. ftp.votredomaine.com ou une IP)
+#   FTP_USERNAME  nom d'utilisateur du compte FTP
+#   FTP_PASSWORD  mot de passe du compte FTP
+# Variable facultative (onglet « Variables ») :
+#   FTP_TARGET_DIR  dossier cible, par défaut public_html/
+#
+# Tant que les secrets sont absents, le workflow se termine sans rien faire.
+
+name: Déployer sur Hostinger
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'voyage-sauvage/**'
+      - '.github/workflows/deploy-hostinger.yml'
+
+concurrency:
+  group: hostinger
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier la présence des identifiants FTP
+        id: creds
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -n "$FTP_SERVER" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Identifiants FTP absents : ajouter FTP_SERVER, FTP_USERNAME et FTP_PASSWORD dans Settings → Secrets and variables → Actions. Déploiement ignoré."
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.creds.outputs.ready == 'true'
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: voyage-sauvage/package-lock.json
+
+      - name: Construire le site
+        if: steps.creds.outputs.ready == 'true'
+        working-directory: voyage-sauvage
+        run: |
+          npm ci
+          npm run build:hostinger
+
+      - name: Envoyer les fichiers sur Hostinger
+        if: steps.creds.outputs.ready == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: voyage-sauvage/dist-hostinger/
+          server-dir: ${{ vars.FTP_TARGET_DIR || 'public_html/' }}
