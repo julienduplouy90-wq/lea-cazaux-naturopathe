@@ -51,6 +51,16 @@ Tous les faits (dates, tarifs, itinéraire, guides, conditions) vivent dans
 
 ## Déploiement
 
+Deux builds selon la cible :
+
+- `npm run build` — build pour GitHub Pages sous `/lea-cazaux-naturopathe/voyage/`
+  (configuré dans `astro.config.mjs`) ;
+- `npm run build:hostinger` — build pour la **racine d'un domaine** (Hostinger,
+  domaine temporaire ou définitif), généré dans `dist-hostinger/`. Zipper le
+  contenu du dossier et le déposer dans `public_html` via le gestionnaire de
+  fichiers hPanel. Quand le domaine définitif est connu, renseigner `site` dans
+  `astro.config.hostinger.mjs`.
+
 `npm run build` produit un site 100 % statique dans `dist/`, déployable tel quel
 (Netlify, Vercel, Cloudflare Pages, GitHub Pages…). Pour GitHub Pages sous un
 sous-chemin (`/mon-repo/`), renseigner aussi `base: '/mon-repo/'` dans
